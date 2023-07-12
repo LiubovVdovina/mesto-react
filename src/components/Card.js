@@ -5,7 +5,7 @@ function Card({card, onCardClick}) {
 
   return(
     <li className="card">
-      <img className="card__img" src={card.link} onClick={handleClick}/>
+      <img className="card__img" src={card.link} alt={card.name} onClick={handleClick}/>
       <button className="button button_type_remove" type="button"></button>  
       <div className="card__label">
         <p className="card__caption">{card.name}</p>
