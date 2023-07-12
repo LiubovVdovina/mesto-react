@@ -15,6 +15,3 @@
 - работа с API сервера
 - Promise
 - React
-
-## GitHub Pages
-https://liubovvdovina.github.io/mesto-react
