@@ -40,30 +40,26 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/ >
       <Footer />
-      <PopupWithForm title='Редактировать профиль' name='edit' isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm title='Редактировать профиль' name='edit' buttonText="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
         <input type="text" placeholder="Введите ваше имя" className="form__input form__input_type_name" name="name" id="name-input" required minLength="2" maxLength="40" />
         <span className="form__input-error name-input-error"></span>
         <input type="text" placeholder="Введите вашу профессию" className="form__input form__input_type_job" name="job" id="job-input" required minLength="2" maxLength="200" />
         <span className="form__input-error job-input-error"></span>
-        <button className="button button_type_submit" type="submit">Сохранить</button>
       </PopupWithForm> 
       
-      <PopupWithForm title='Новое место' name='place' isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm title='Новое место' name='place' buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
         <input type="text" placeholder="Название" className="form__input form__input_type_place" name="place" id="place-input" required minLength="2" maxLength="30" />
         <span className="form__input-error place-input-error"></span>
         <input type="url" placeholder="Ссылка на картинку" className="form__input form__input_type_src" name="src" id="src-input" required />
         <span className="form__input-error src-input-error"></span>
-        <button className="button button_type_submit" type="submit">Создать</button>
       </PopupWithForm> 
 
-      <PopupWithForm title='Обновить аватар' name='avatar' isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm title='Обновить аватар' name='avatar' buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
         <input type="url" placeholder="Ссылка на аватар" className="form__input form__input_type_src" name="src" id="avatar-input" required />
         <span className="form__input-error avatar-input-error"></span>
-        <button className="button button_type_submit" type="submit">Сохранить</button>
       </PopupWithForm> 
 
-      <PopupWithForm title='Вы уверены' name='remove'> 
-        <button className="button button_type_submit" type="submit">Да</button>
+      <PopupWithForm title='Вы уверены' name='remove' buttonText='Да'> 
       </PopupWithForm>
 
       <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
