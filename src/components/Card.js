@@ -19,7 +19,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
   }
 
   return(
-    <li className="card">
+    <div className="card">
       <img className="card__img" src={card.link} alt={card.name} onClick={handleClick}/>
       {isOwn && <button className="button button_type_remove" type="button" onClick={handleDeleteClick}></button>}  
       <div className="card__label">
@@ -29,7 +29,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
           <div className="card__likes-number">{card.likes.length}</div>
         </div>         
       </div>
-    </li>
+    </div>
   );
 }
 
