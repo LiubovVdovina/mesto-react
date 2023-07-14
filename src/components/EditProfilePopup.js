@@ -8,7 +8,7 @@ function EditProfilePopup( {isOpen, onClose, onUpdateUser}) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-    }, [currentUser]);
+    }, [currentUser, isOpen]);
 
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
@@ -23,7 +23,6 @@ function EditProfilePopup( {isOpen, onClose, onUpdateUser}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     // Передаём значения управляемых компонентов во внешний обработчик
     onUpdateUser({
       name,
@@ -37,7 +36,7 @@ function EditProfilePopup( {isOpen, onClose, onUpdateUser}) {
                    buttonText="Сохранить" 
                    isOpen={isOpen} 
                    onClose={onClose} 
-                   nSubmit={handleSubmit}>
+                   onSubmit={handleSubmit}>
       <input type="text" 
              placeholder="Введите ваше имя" 
              className="form__input form__input_type_name" 
