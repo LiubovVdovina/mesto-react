@@ -20,9 +20,10 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({}); // переменная состояния, хранящая данные текущего пользователя
 
   React.useEffect(() => {
-    api.getUserInfo()
-      .then((userData) => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, initialCards]) => {
         setCurrentUser(userData);
+        setCards(initialCards)
       })
       .catch((err) => console.log(err))
   }, []);
@@ -52,16 +53,6 @@ function App() {
 
 
   const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api.getInitialCards()
-      .then((initialCards) => {
-        setCards(initialCards)
-      })
-      .catch((err) => console.log(err))
-
-  },[]);
-
 
   function handleCardLike(card) {
 
