@@ -26,8 +26,8 @@ class Api {
     return this._request('/users/me', { method: 'GET', headers: this._headers });
   }
 
-  sendUserInfo({ name, job }) {
-    return this._request('/users/me', { method: 'PATCH', headers: this._headers, body: JSON.stringify({ name: name, about: job })});
+  sendUserInfo({ name, about }) {
+    return this._request('/users/me', { method: 'PATCH', headers: this._headers, body: JSON.stringify({ name, about })});
   }
 
   getInitialCards() {

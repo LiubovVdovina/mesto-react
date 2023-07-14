@@ -81,6 +81,15 @@ function App() {
     .then(() => setCards((state) => state.filter((c)=> c._id != card._id)))
     .catch((err) => console.log(err))
   }
+
+  function handleUpdateUser(newUserInfo) {
+    api.sendUserInfo(newUserInfo)
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch((err) => console.log(err))
+  }
   
   return(
     <CurrentUserContext.Provider value={currentUser}>
@@ -88,7 +97,7 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} cards={cards}/ >
       <Footer />
-      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
       
       <PopupWithForm title='Новое место' name='place' buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
         <input type="text" placeholder="Название" className="form__input form__input_type_place" name="place" id="place-input" required minLength="2" maxLength="30" />
