@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './Card'
-import * as apiModule from '../utils/Api'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, cards}) {
