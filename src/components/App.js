@@ -7,6 +7,7 @@ import Footer from './Footer'
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup'
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup'
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
 function App() {
@@ -91,6 +92,15 @@ function App() {
       .catch((err) => console.log(err))
   }
   
+  function handleUpdateAvatar(newAvatar) {
+    api.sendAvatarInfo(newAvatar)
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch((err) => console.log(err))
+  }
+
   return(
     <CurrentUserContext.Provider value={currentUser}>
     <>
@@ -106,10 +116,7 @@ function App() {
         <span className="form__input-error src-input-error"></span>
       </PopupWithForm> 
 
-      <PopupWithForm title='Обновить аватар' name='avatar' buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-        <input type="url" placeholder="Ссылка на аватар" className="form__input form__input_type_src" name="src" id="avatar-input" required />
-        <span className="form__input-error avatar-input-error"></span>
-      </PopupWithForm> 
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
 
       <PopupWithForm title='Вы уверены' name='remove' buttonText='Да'> 
       </PopupWithForm>

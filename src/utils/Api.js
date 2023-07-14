@@ -54,8 +54,8 @@ class Api {
     return isLiked ? this.removeLike(cardId) : this.putLike(cardId)
   }
 
-  sendAvatarInfo(data) {
-    return this._request('/users/me/avatar', { method: 'PATCH', headers: this._headers, body: JSON.stringify({ avatar: data.src })});
+  sendAvatarInfo(avatar) {
+    return this._request('/users/me/avatar', { method: 'PATCH', headers: this._headers, body: JSON.stringify(avatar)});
   }
 }
 
