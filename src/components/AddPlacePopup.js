@@ -14,6 +14,12 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
     });
   }
 
+  React.useEffect(() => {
+    placeNameRef.current.value = "";
+    placeLinkRef.current.value = "";
+
+  }, [isOpen])
+
   return(
     <PopupWithForm title='Новое место' name='place' buttonText="Создать" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
         <input ref={placeNameRef} type="text" placeholder="Название" className="form__input form__input_type_place" name="place" id="place-input" required minLength="2" maxLength="30" />
