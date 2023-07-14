@@ -113,7 +113,6 @@ function App() {
 
   return(
     <CurrentUserContext.Provider value={currentUser}>
-    <>
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} cards={cards}/ >
       <Footer />
@@ -127,7 +126,6 @@ function App() {
       </PopupWithForm>
 
       <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-  </>
   </CurrentUserContext.Provider>
   );
 }
